@@ -6,8 +6,10 @@ Copyright (c) 2019 - present AppSeed.us
 from django import template
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 from django.template import loader
 from django.urls import reverse
+import os
 
 
 def index(request):
@@ -16,6 +18,11 @@ def index(request):
     html_template = loader.get_template('home/index.html')
     return HttpResponse(html_template.render(context, request))
 
+def capture(request):
+    # Nhấn nút start capture
+    if request.method == 'GET':
+        os.system("cicflowmeter -i Wi-Fi -c Hehe.csv")
+        return render(request, 'capture.html')
 
 def pages(request):
     context = {}
