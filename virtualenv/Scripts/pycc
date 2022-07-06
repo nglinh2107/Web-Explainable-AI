@@ -1,0 +1,3 @@
+#!D:\DACN\black-dashboard-django-master\virtualenv\Scripts\python.exe
+from numba.pycc import main
+main()
